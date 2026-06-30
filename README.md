@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💖 MyKiv AI — AI-Powered Relationship & Health Companion
 
-## Getting Started
+MyKiv AI is a modern, premium Progressive Web Application (PWA) designed for couples to track their health, coordinate their daily schedules, manage shared expenses, and strengthen their connection with personalized AI insights.
 
-First, run the development server:
+---
 
+## ✨ Features
+
+- **🧠 AI Relationship Brain**: Powered by Gemini (via Replicate), providing personalized relationship insights, shared meal recommendations, and customized summaries based on your shared memories and health tracking.
+- **🏥 Health & Wellness Tracker**: Log water intake, meals, sleep, mood, medicines, and exercises. Visualize history with interactive charts.
+- **📅 Couple Hub**:
+  - **Timeline**: Track joint plans, dates, and milestones.
+  - **Wishlist**: Save and tracking progress of shared wishes/purchases.
+  - **Presence/Location**: Shared current status and timezone coordinate.
+- **💳 Shared Expenses**: Keep track of couple budget and split bills easily.
+- **⏰ Smart Reminders**: Never miss anniversaries, medicine times, or shared tasks with custom snooze options.
+- **📱 PWA & Offline Support**: Fully installable on mobile devices (iOS & Android) with local storage sync when offline.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) (App Router, Server Actions, Server Components)
+- **Database & Auth**: [Supabase](https://supabase.com/) (PostgreSQL, Row-Level Security, Google OAuth)
+- **Styling**: Vanilla CSS (TailwindCSS optional) with sleek modern glassmorphism design
+- **AI Engine**: Replicate API (Gemini LLM)
+- **State Management & Querying**: React Context, React Query (TanStack Query)
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone & Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd mykiv-ai
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure Environment Variables
+Create a `.env.local` file in the root of the project with your API keys:
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
+REPLICATE_API_TOKEN=your-replicate-api-token
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Setup Database Schema & Seed Data
+Initialize the tables, RLS policies, and triggers, then seed the mock relationship data:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Apply RLS fix and database migrations
+supabase db query --linked --file supabase/rls_fix.sql
 
-## Learn More
+# Seed 2 weeks of couple history
+supabase db query --linked --file supabase/seed.sql
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Running the Development Server
+Start the Next.js dev server:
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) with your browser to experience MyKiv AI!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔒 Security & Row-Level Security (RLS)
+The database enforces strict privacy controls so that couples can only see their own logs and their partner's data, ensuring maximum security and confidentiality.
