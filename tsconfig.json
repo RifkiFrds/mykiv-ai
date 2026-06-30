@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,17 +23,43 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@/shared/*": ["./src/shared/*"],
-      "@/features/*": ["./src/features/*"],
-      "@/services/*": ["./src/services/*"],
-      "@/repositories/*": ["./src/repositories/*"],
-      "@/types": ["./src/types"],
-      "@/ai/*": ["./src/ai/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/constants/*": ["./src/constants/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@/shared/*": [
+        "./src/shared/*"
+      ],
+      "@/features/*": [
+        "./src/features/*"
+      ],
+      "@/services/*": [
+        "./src/services/*"
+      ],
+      "@/repositories/*": [
+        "./src/repositories/*"
+      ],
+      "@/types": [
+        "./src/types"
+      ],
+      "@/ai/*": [
+        "./src/ai/*"
+      ],
+      "@/hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@/constants/*": [
+        "./src/constants/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "dist/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
